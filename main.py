@@ -10,9 +10,33 @@ sender_email = "sender_mail"  # Örn: "your_email@example.com"
 # Kullanıcının alıcının e-posta adresini buraya yazması gerekiyor
 receiver_email = "reciver_mai"  # Örn: "receiver_email@example.com"
 
+<<<<<<< HEAD
 message = MIMEMultipart("")
 # Kullanıcının e-posta konusu için bir metin yazması gerekiyor
 message["Subject"] = "message_subject"  # Örn: "This is a test email"
+=======
+sender_email = ""
+receiver_email = ""
+
+# Gmail App Password (16 haneli, boşluksuz)
+app_password = ""   # BURAYA kendi app password'unu yaz
+
+subject = "Python SMTP Test"
+body_text = """
+Merhaba,
+
+Bu mail Python üzerinden SMTP_SSL kullanılarak gönderildi.
+"""
+
+attachment_path = "LICENSE"  # Yoksa None yapabilirsin
+
+
+# ==============================
+# MESSAGE SETUP
+# ==============================
+
+message = MIMEMultipart()
+>>>>>>> 243c14d (temizlenen kod)
 message["From"] = sender_email
 message["To"] = receiver_email
 
@@ -42,7 +66,17 @@ server = smtplib.SMTP("smtp_server", 587)  # Örn: "smtp.gmail.com"
 server.starttls()
 server.ehlo_or_helo_if_needed()
 
+<<<<<<< HEAD
 # E-posta gönderimi
 server.sendmail(
     sender_email, receiver_email, message.as_string()
 )
+=======
+    print("Mail başarıyla gönderildi.")
+
+except smtplib.SMTPAuthenticationError:
+    print("Authentication hatası. App password yanlış olabilir.")
+
+except Exception as e:
+    print("Hata oluştu:", e)
+>>>>>>> 243c14d (temizlenen kod)
